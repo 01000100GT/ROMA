@@ -4,12 +4,13 @@ requires-python = ">=3.12"
 
 [[package]]
 name = "agno"
-version = "1.7.5"
+version = "1.8.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "docstring-parser" },
     { name = "gitpython" },
     { name = "httpx" },
+    { name = "packaging" },
     { name = "pydantic" },
     { name = "pydantic-settings" },
     { name = "python-dotenv" },
@@ -20,9 +21,9 @@ dependencies = [
     { name = "typer" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5b/54/de85a1bbb184afa0dce7f92fe2d5102fee5bf9a8dcc2e10ac5e5f6f957c4/agno-1.7.5.tar.gz", hash = "sha256:1035dd730df724bc360870b73cfad1993b2e4137f33d722311aca146fbb705e9", size = 712142, upload-time = "2025-07-17T21:21:46.602Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/ac/44/b7aa76f7b2e8268bcd986be432ffad35e081c7b1d3c67e19b2ee2748c4b2/agno-1.8.2.tar.gz", hash = "sha256:f8dab74a91cb56d5329d449b236361f1e39d0f1573182cc20912e16db25b6012", size = 754571, upload-time = "2025-09-08T19:29:50.167Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ec/91/06bd1c8564fd0038afc9cd9d48647719ee86ca3576223de50eb46d4343e5/agno-1.7.5-py3-none-any.whl", hash = "sha256:18996910042200b5ae1041a1f4c69a80492961980a0f52aa08f9c5aaada040f5", size = 948141, upload-time = "2025-07-17T21:21:44.363Z" },
+    { url = "https://files.pythonhosted.org/packages/c0/7d/756bc6cb78c5f98f06a1f2be2b354fa115dca9be64bf73b0bbada75d20d1/agno-1.8.2-py3-none-any.whl", hash = "sha256:2a55a80848bcfe448c09ba1eed41c299a84c2f882e7e3aed145d887cbba88de1", size = 997067, upload-time = "2025-09-08T19:29:48.043Z" },
 ]
 
 [[package]]
@@ -382,6 +383,15 @@ wheels = [
 ]
 
 [[package]]
+name = "dockerfile-parse"
+version = "2.0.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/92/df/929ee0b5d2c8bd8d713c45e71b94ab57c7e11e322130724d54f469b2cd48/dockerfile-parse-2.0.1.tar.gz", hash = "sha256:3184ccdc513221983e503ac00e1aa504a2aa8f84e5de673c46b0b6eee99ec7bc", size = 24556, upload-time = "2023-07-18T13:36:07.897Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7a/6c/79cd5bc1b880d8c1a9a5550aa8dacd57353fa3bb2457227e1fb47383eb49/dockerfile_parse-2.0.1-py2.py3-none-any.whl", hash = "sha256:bdffd126d2eb26acf1066acb54cb2e336682e1d72b974a40894fac76a4df17f6", size = 14845, upload-time = "2023-07-18T13:36:06.052Z" },
+]
+
+[[package]]
 name = "docstring-parser"
 version = "0.17.0"
 source = { registry = "https://pypi.org/simple" }
@@ -406,10 +416,11 @@ wheels = [
 
 [[package]]
 name = "e2b"
-version = "1.11.1"
+version = "2.1.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "attrs" },
+    { name = "dockerfile-parse" },
     { name = "httpcore" },
     { name = "httpx" },
     { name = "packaging" },
@@ -417,23 +428,23 @@ dependencies = [
     { name = "python-dateutil" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b4/49/2110d31074da3ba233984c6c02fa5def9ab043669cdb921f380b71457329/e2b-1.11.1.tar.gz", hash = "sha256:7f7b6f238208d0a23353bb0da01f91a924321b57c61b176506862cbc1493ce8c", size = 61926, upload-time = "2025-08-06T10:31:42.747Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d3/32/e8b6bb44f65e5def4f9e316c9624ea527693fc6d7ab0f8d6f9df349754e0/e2b-2.1.2.tar.gz", hash = "sha256:7bdd6e0adc521fa09f47e1200659b7101ff30f8edddb3e66d347b6847c4e5073", size = 79239, upload-time = "2025-09-09T19:57:09.319Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/be/a4/be83c8b1cd923b558fb76a0fcbc4172b5348c956c706c70e19c038bc37f8/e2b-1.11.1-py3-none-any.whl", hash = "sha256:1ecb123873788472731c101939a494ab852cbcce0f913df6f7ecb194ae932130", size = 114762, upload-time = "2025-08-06T10:31:40.971Z" },
+    { url = "https://files.pythonhosted.org/packages/08/ee/0b68aa0ca4d0b257cd5d6010dbb5fdb7988d8f316256f58d1df8f60cae75/e2b-2.1.2-py3-none-any.whl", hash = "sha256:3da7a4f253262e794f8a95cb0b2093a0aa37ab3b825c6cd5cda9dd8403059d1f", size = 154206, upload-time = "2025-09-09T19:57:06.717Z" },
 ]
 
 [[package]]
 name = "e2b-code-interpreter"
-version = "1.5.2"
+version = "2.0.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "attrs" },
     { name = "e2b" },
     { name = "httpx" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ee/85/b4a1c9427b45818d4c3773ed967ec1fcc2d7b677e096d8051303889adc2d/e2b_code_interpreter-1.5.2.tar.gz", hash = "sha256:3bd6ea70596290e85aaf0a2f19f28bf37a5e73d13086f5e6a0080bb591c5a547", size = 10006, upload-time = "2025-07-07T14:58:28.676Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/42/84/e94cb706d88ac3510748be9d0030fb0a896a25b43677903aff20213b3cc1/e2b_code_interpreter-2.0.0.tar.gz", hash = "sha256:19136916be8de60bfd0a678742501d1d0335442bb6e86405c7dd6f98059b73c4", size = 10029, upload-time = "2025-08-22T10:16:57.169Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/f5/4a/7dc5c673c47418e1b38594ab3b022ee20ea1bf3ff8f8aa8273d6ddc99532/e2b_code_interpreter-1.5.2-py3-none-any.whl", hash = "sha256:5c3188d8f25226b28fef4b255447cc6a4c36afb748bdd5180b45be486d5169f3", size = 12873, upload-time = "2025-07-07T14:58:27.622Z" },
+    { url = "https://files.pythonhosted.org/packages/5e/f1/135acbaffe4b2e63addecfc2a6c2ecf9ea3e5394aa2a9a829e3eb6f2098d/e2b_code_interpreter-2.0.0-py3-none-any.whl", hash = "sha256:273642d4dd78f09327fb1553fe4f7ddcf17892b78f98236e038d29985e42dca5", size = 12939, upload-time = "2025-08-22T10:16:55.698Z" },
 ]
 
 [[package]]
@@ -2060,11 +2071,11 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "agno", specifier = ">=1.7" },
+    { name = "agno", specifier = ">=1.8,<2.0" },
     { name = "datasets", specifier = ">=4.0.0" },
     { name = "duckduckgo-search", specifier = ">=8.0.1" },
-    { name = "e2b", specifier = "<2.0.0" },
-    { name = "e2b-code-interpreter", specifier = "<2.0.0" },
+    { name = "e2b", specifier = ">=2.0.0" },
+    { name = "e2b-code-interpreter", specifier = ">=2.0.0" },
     { name = "eventlet", specifier = ">=0.40.0" },
     { name = "exa-py", specifier = ">=1.14.16" },
     { name = "flask", specifier = ">=3.1.1" },

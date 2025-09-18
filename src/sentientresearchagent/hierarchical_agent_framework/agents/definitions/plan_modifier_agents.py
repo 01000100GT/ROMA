@@ -25,7 +25,9 @@ except ImportError:
 
 PLAN_MODIFIER_AGENT_NAME = "PlanModifier_Agno"
 # Consider using a highly capable model for plan modification, as it's a complex reasoning task.
-PLAN_MODIFIER_MODEL_NAME = "openrouter/anthropic/claude-4-sonnet"
+# PLAN_MODIFIER_MODEL_NAME = "openrouter/anthropic/claude-4-sonnet"
+# ssj 修改 替换一下模型测试
+PLAN_MODIFIER_MODEL_NAME = "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
 
 # System prompt tailored for plan modification
 PLAN_MODIFIER_SYSTEM_PROMPT = """

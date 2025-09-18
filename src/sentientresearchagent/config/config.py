@@ -22,11 +22,11 @@ from .paths import RuntimePaths
 class LLMConfig(BaseModel):
     """Configuration for LLM providers and models."""
     provider: str = "openai"
-    model: str = "gpt-4"
+    model: str = Field(default=os.getenv("OPENAI_API_MODEL", "gpt-4"))
     temperature: float = 0.7
     max_tokens: Optional[int] = None
     api_key: Optional[str] = Field(default_factory=lambda: os.getenv("OPENAI_API_KEY"))
-    api_base: Optional[str] = None
+    api_base: Optional[str] = Field(default_factory=lambda: os.getenv("OPENAI_API_URL"))
     timeout: float = 30.0
     max_retries: int = 3
     

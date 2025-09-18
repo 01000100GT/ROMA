@@ -12,7 +12,7 @@ agents:
     description: "Specialized planner for research-focused tasks"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B" #"openrouter/anthropic/claude-sonnet-4"
+      model_id: "openai/o3-2025-04-16" #"openrouter/anthropic/claude-sonnet-4"
       # temperature: 0.7
     prompt_source: "prompts.planner_prompts.PLANNER_SYSTEM_MESSAGE"
     response_model: "PlanOutput"
@@ -29,7 +29,7 @@ agents:
     description: "Specialized planner optimized for search-focused research tasks with date awareness and parallel execution"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"  # Switched from slow o3 model for 10x faster planning
+      model_id: "openrouter/anthropic/claude-sonnet-4"  # Switched from slow o3 model for 10x faster planning
       temperature: 0.35      
     # agno_params:
     #   reasoning: true
@@ -48,7 +48,7 @@ agents:
     description: "Specialized planner optimized for search-focused research tasks with date awareness and parallel execution"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"  # Switched from slow o3 model for 10x faster planning
+      model_id: "openrouter/anthropic/claude-sonnet-4"  # Switched from slow o3 model for 10x faster planning
       temperature: 0.35
     # agno_params:
     #   reasoning: true
@@ -68,7 +68,7 @@ agents:
     description: "Specialized planner optimized for search-focused research tasks with date awareness and parallel execution"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"  # Switched from slow o3 model for 10x faster planning
+      model_id: "openrouter/anthropic/claude-sonnet-4"  # Switched from slow o3 model for 10x faster planning
       temperature: 0.35
       # temperature: 0.7
     # agno_params:
@@ -89,7 +89,7 @@ agents:
     description: "Master planner specialized in high-level research project decomposition and strategy"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"  # Switched from slow o3 model for 10x faster planning
+      model_id: "openrouter/anthropic/claude-sonnet-4"  # Switched from slow o3 model for 10x faster planning
       temperature: 0.35
       # temperature: 0.7
     prompt_source: "prompts.planner_prompts.DEEP_RESEARCH_PLANNER_SYSTEM_MESSAGE"
@@ -107,7 +107,7 @@ agents:
     description: "Master planner specialized in high-level research project decomposition and strategy"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"  # Switched from slow o3 model for 10x faster planning
+      model_id: "openrouter/anthropic/claude-sonnet-4"  # Switched from slow o3 model for 10x faster planning
       temperature: 0.3
     # agno_params:
     #   reasoning: true
@@ -131,7 +131,7 @@ agents:
     description: "LLM-based search executor with web search tools"
     model:
       provider: "openai"
-      model_id: "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "gpt-4.1"
     prompt_source: "prompts.executor_prompts.SEARCH_EXECUTOR_SYSTEM_MESSAGE"
     response_model: "WebSearchResultsOutput"
     tools: ["DuckDuckGoTools", "WikipediaTools", "web_search"]
@@ -145,7 +145,7 @@ agents:
     description: "Performs Analysis and Synthesis of information"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"  # Switched from slow o3 model for faster execution
+      model_id: "openrouter/google/gemini-2.5-pro"  # Switched from slow o3 model for faster execution
     # agno_params:
     #   reasoning: true
     prompt_source: "prompts.executor_prompts.REASONING_EXECUTOR_SYSTEM_MESSAGE"
@@ -167,7 +167,7 @@ agents:
     description: "Writes detailed reports based on provided context"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "openrouter/google/gemini-2.5-pro"
     # agno_params:
     #   reasoning: true
     prompt_source: "prompts.executor_prompts.BASIC_REPORT_WRITER_SYSTEM_MESSAGE"
@@ -184,7 +184,7 @@ agents:
     description: "Intelligent searcher that combines AI-powered search with Wikipedia"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"  # Switched from slow o3 model for faster search
+      model_id: "openrouter/google/gemini-2.5-pro"  # Switched from slow o3 model for faster search
     # agno_params:
     #   reasoning: true
     prompt_source: "prompts.executor_prompts.SMART_WEB_SEARCHER_SYSTEM_MESSAGE"
@@ -208,8 +208,8 @@ agents:
       # model_id: "gpt-4o"
       search_context_size: "high"  # Options: "medium", "high", "low" (works with both OpenAI and OpenRouter)
       # Optional: use OpenRouter instead of OpenAI API (requires OPENROUTER_API_KEY)
-      use_openrouter: false
-      model_id: "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"  # When using OpenRouter
+      use_openrouter: true
+      model_id: "openai/gpt-4o-search-preview"  # When using OpenRouter
     registration:
       action_keys:
         - action_verb: "execute"
@@ -235,7 +235,7 @@ agents:
     adapter_class: "ExaCustomSearchAdapter"
     description: "Comprehensive search using Exa API with LiteLLM processing - prioritizes reliable sources"
     adapter_params:
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"  # Can be any LiteLLM-supported model
+      model_id: "openrouter/google/gemini-2.5-pro"  # Can be any LiteLLM-supported model
       num_results: 5      # Number of Exa search results to retrieve
       # include_domains: ["en.wikipedia.org", "imdb.com"]
     registration:
@@ -255,7 +255,7 @@ agents:
     description: "Synthesizes results from multiple child tasks"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "openrouter/google/gemini-2.5-pro"
     prompt_source: "prompts.aggregator_prompts.DEFAULT_AGGREGATOR_SYSTEM_MESSAGE"
     registration:
       action_keys:
@@ -270,7 +270,7 @@ agents:
     description: "Specialized aggregator for combining search results with deduplication and relevance ranking"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "openrouter/google/gemini-2.5-pro"
     # agno_params:
     #   reasoning: true
     prompt_source: "prompts.aggregator_prompts.SEARCH_AGGREGATOR_SYSTEM_MESSAGE"
@@ -287,7 +287,7 @@ agents:
     description: "Specialized aggregator for synthesizing analytical outputs and drawing logical conclusions"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "openrouter/google/gemini-2.5-pro"
     # agno_params:
     #   reasoning: true
     prompt_source: "prompts.aggregator_prompts.THINK_AGGREGATOR_SYSTEM_MESSAGE"
@@ -304,7 +304,7 @@ agents:
     description: "Specialized aggregator for combining written content with focus on narrative flow and coherence"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "openrouter/google/gemini-2.5-pro"
     prompt_source: "prompts.aggregator_prompts.WRITE_AGGREGATOR_SYSTEM_MESSAGE"
     registration:
       action_keys:
@@ -319,7 +319,7 @@ agents:
     description: "Master aggregator for root-level research tasks with executive synthesis and strategic recommendations"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "openrouter/google/gemini-2.5-pro"
     prompt_source: "prompts.aggregator_prompts.ROOT_RESEARCH_AGGREGATOR_SYSTEM_MESSAGE"
     registration:
       named_keys: ["RootResearchAggregator", "root_research_aggregator"]
@@ -331,7 +331,7 @@ agents:
     description: "Master aggregator for root-level analysis tasks with decisive conclusions and strategic recommendations"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "openrouter/google/gemini-2.5-pro"
     # agno_params:
     #   reasoning: true
     prompt_source: "prompts.aggregator_prompts.ROOT_ANALYSIS_AGGREGATOR_SYSTEM_MESSAGE"
@@ -345,7 +345,7 @@ agents:
     description: "Master aggregator for root-level general tasks with comprehensive synthesis and actionable insights"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "openrouter/google/gemini-2.5-pro"
     # agno_params:
     #   reasoning: true
     prompt_source: "prompts.aggregator_prompts.ROOT_GENERAL_AGGREGATOR_SYSTEM_MESSAGE"
@@ -363,7 +363,7 @@ agents:
     description: "Specialized planner for cryptocurrency and DeFi analytics with deep domain expertise"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"  # Switched from slow o3 model for 10x faster planning
+      model_id: "openrouter/google/gemini-2.5-flash:nitro"  # Switched from slow o3 model for 10x faster planning
       temperature: 0.35
     # agno_params:
     #   reasoning: true
@@ -382,7 +382,7 @@ agents:
     description: "Specialized planner for crypto-specific search tasks optimized for blockchain data retrieval"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"  # Switched from slow o3 model for 10x faster planning
+      model_id: "openrouter/google/gemini-2.5-flash:nitro"  # Switched from slow o3 model for 10x faster planning
       temperature: 0.35
     # agno_params:
     #   reasoning: true
@@ -402,7 +402,7 @@ agents:
     model:
       provider: "litellm"
       # model_id: "openrouter/deepseek/deepseek-r1-0528:nitro"  # Switched from slow o3 model for faster analysis
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "openrouter/anthropic/claude-sonnet-4"
     # agno_params:
     #   reasoning: true
     prompt_source: "prompts.executor_prompts.CRYPTO_MARKET_ANALYZER_SYSTEM_MESSAGE"
@@ -488,7 +488,7 @@ agents:
     description: "Comprehensive crypto research executor for deep blockchain and DeFi analysis"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B" 
+      model_id: "openrouter/google/gemini-2.5-flash:nitro" 
     # agno_params:
     #   reasoning: true
     prompt_source: "prompts.executor_prompts.CRYPTO_RESEARCH_EXECUTOR_SYSTEM_MESSAGE"
@@ -505,7 +505,7 @@ agents:
     description: "Specialized aggregator for crypto data synthesis and market insights"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "openrouter/google/gemini-2.5-flash:nitro"
     # agno_params:
     #   reasoning: true
     prompt_source: "prompts.aggregator_prompts.CRYPTO_ANALYTICS_AGGREGATOR_SYSTEM_MESSAGE"
@@ -519,7 +519,7 @@ agents:
     description: "Master aggregator for executive-level crypto research synthesis and strategic insights"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "openrouter/google/gemini-2.5-flash:nitro"
     # agno_params:
     #   reasoning: true
     prompt_source: "prompts.aggregator_prompts.CRYPTO_ROOT_AGGREGATOR_SYSTEM_MESSAGE"
@@ -537,7 +537,7 @@ agents:
     description: "Determines if tasks are atomic or need further planning"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
+      model_id: "openrouter/google/gemini-2.5-flash"
     prompt_source: "prompts.atomizer_prompts.ATOMIZER_SYSTEM_MESSAGE"
     response_model: "AtomizerOutput"
     registration:
@@ -557,7 +557,7 @@ agents:
     description: "Modifies existing plans based on user feedback"
     model:
       provider: "litellm"
-      model_id: "openai/deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"  # Switched from slow o3 model for 10x faster planning
+      model_id: "openrouter/anthropic/claude-sonnet-4"  # Switched from slow o3 model for 10x faster planning
     # agno_params:
     # temperature: 0.7
     prompt_source: "prompts.plan_modifier_prompts.PLAN_MODIFIER_SYSTEM_PROMPT"
