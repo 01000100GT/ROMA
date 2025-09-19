@@ -40,22 +40,22 @@ const ProjectProfileSelector: React.FC<ProjectProfileSelectorProps> = ({
         console.log('🔍 Attempting to fetch profiles from /api/profiles');
         const response = await fetch('/api/profiles');
         console.log('📡 Response status:', response.status, response.statusText);
-        
+
         if (!response.ok) {
           throw new Error(`HTTP ${response.status}: ${response.statusText}`);
         }
-        
+
         const data = await response.json();
         console.log('✅ Parsed data:', data);
-        
+
         // Map the profiles to include both display name and filename
         const mappedProfiles = (data.profiles || []).map((profile: any) => ({
           ...profile,
           filename: getFilenameFromDisplayName(profile.name) // Map display name to filename
         }));
-        
+
         setProfiles(mappedProfiles);
-        
+
         // Auto-select the current profile from backend
         if (data.current_profile && (!currentProfile || currentProfile !== data.current_profile)) {
           console.log('🎯 Auto-selecting current profile:', data.current_profile);
@@ -89,7 +89,7 @@ const ProjectProfileSelector: React.FC<ProjectProfileSelectorProps> = ({
   // Handle profile switching with backend API call
   const handleProfileSwitch = async (profile: Profile) => {
     const profileFilename = getProfileFilename(profile);
-    
+
     if (profileFilename === currentProfile) {
       setIsOpen(false);
       return;
@@ -100,7 +100,7 @@ const ProjectProfileSelector: React.FC<ProjectProfileSelectorProps> = ({
 
     try {
       console.log(`🔄 Switching to profile: ${profile.name} (filename: ${profileFilename})`);
-      
+
       // Call the backend API using the filename, not the display name
       const response = await fetch(`/api/profiles/${profileFilename}/switch`, {
         method: 'POST',
@@ -113,18 +113,18 @@ const ProjectProfileSelector: React.FC<ProjectProfileSelectorProps> = ({
 
       if (result.success) {
         console.log(`✅ Successfully switched to profile: ${profile.name}`);
-        
+
         // Update local state with the filename (what the backend uses)
         onProfileChange(profileFilename);
-        
+
         // Update the profiles list to reflect the change
-        setProfiles(prevProfiles => 
+        setProfiles(prevProfiles =>
           prevProfiles.map(p => ({
             ...p,
             is_current: getProfileFilename(p) === profileFilename
           }))
         );
-        
+
         setIsOpen(false);
       } else {
         console.error(`❌ Failed to switch to profile: ${profile.name}`, result);
@@ -165,7 +165,7 @@ const ProjectProfileSelector: React.FC<ProjectProfileSelectorProps> = ({
   return (
     <div className="space-y-2">
       <label className="text-sm font-medium text-gray-700">Agent Profile</label>
-      
+
       <div className="relative">
         <button
           type="button"
@@ -175,7 +175,7 @@ const ProjectProfileSelector: React.FC<ProjectProfileSelectorProps> = ({
         >
           <div className="flex items-center space-x-2">
             <User className="h-4 w-4 text-gray-500" />
-            <span className="text-sm">
+            <span className="text-sm text-gray-900">
               {selectedProfileData?.name || 'Select Profile'}
             </span>
             {switching && (
@@ -193,14 +193,13 @@ const ProjectProfileSelector: React.FC<ProjectProfileSelectorProps> = ({
                 type="button"
                 onClick={() => handleProfileSwitch(profile)}
                 disabled={switching !== null}
-                className={`w-full px-3 py-3 text-left hover:bg-gray-50 focus:outline-none focus:bg-gray-50 border-b border-gray-100 last:border-b-0 disabled:opacity-50 disabled:cursor-not-allowed ${
-                  getProfileFilename(profile) === currentProfile ? 'bg-blue-50' : ''
-                }`}
+                className={`w-full px-3 py-3 text-left hover:bg-gray-50 focus:outline-none focus:bg-gray-50 border-b border-gray-100 last:border-b-0 disabled:opacity-50 disabled:cursor-not-allowed ${getProfileFilename(profile) === currentProfile ? 'bg-blue-50' : ''
+                  }`}
               >
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <span className="font-medium text-sm">{profile.name}</span>
+                      <span className="font-medium text-sm text-gray-900">{profile.name}</span>
                       {switching === profile.name && (
                         <Loader2 className="h-3 w-3 animate-spin text-blue-500" />
                       )}
@@ -211,9 +210,9 @@ const ProjectProfileSelector: React.FC<ProjectProfileSelectorProps> = ({
                       <AlertCircle className="h-4 w-4 text-red-500" />
                     )}
                   </div>
-                  
+
                   <p className="text-xs text-gray-600">{profile.description}</p>
-                  
+
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div className="flex items-center space-x-1">
                       <Settings className="h-3 w-3 text-gray-400" />
@@ -257,7 +256,7 @@ const ProjectProfileSelector: React.FC<ProjectProfileSelectorProps> = ({
       {selectedProfileData && (
         <div className="mt-3 p-3 bg-gray-50 rounded-md">
           <h4 className="text-sm font-medium text-gray-900 mb-3">{selectedProfileData.name}</h4>
-          
+
           {/* Core Adapters */}
           <div className="space-y-2 text-xs text-gray-600 mb-3">
             <div className="flex justify-between">
@@ -333,7 +332,7 @@ const ProjectProfileSelector: React.FC<ProjectProfileSelectorProps> = ({
               </div>
             </div>
           )}
-          
+
           {!selectedProfileData.is_valid && (selectedProfileData.validation_issues || []).length > 0 && (
             <div className="mt-2 p-2 bg-red-50 rounded border border-red-200">
               <div className="flex items-center space-x-1 text-red-700 text-xs font-medium mb-1">
