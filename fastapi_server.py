@@ -35,7 +35,7 @@ agent_cache = {}
 # Request/Response Models
 class ResearchRequest(BaseModel):
     goal: str = Field(
-        ..., description="Research question or goal", min_length=1, max_length=1000
+        ..., description="Research question or goal", min_length=1, max_length=11000
     )
     profile: str = Field(default="general_agent", description="Agent profile to use")
     max_steps: int = Field(

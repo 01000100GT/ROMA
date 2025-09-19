@@ -57,7 +57,7 @@ class RequestValidator:
         if len(goal.strip()) < 3:
             return False, "Goal must be at least 3 characters long"
         
-        if len(goal) > 1000:
+        if len(goal) > 11000:
             return False, "Goal must be less than 1000 characters"
         
         return True, None
